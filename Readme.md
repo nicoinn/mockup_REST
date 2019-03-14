@@ -57,9 +57,11 @@ Then copy example override file
 
 ```cp docker-compose.yml.override.sample docker-compose.yml.override```
 
-Edit ```docker-compose.yml.override```filling in the correct information, i.e.:
+Edit ```docker-compose.yml.override```filling in the correct information, i.e. adapt these line to your specific case:
 ```
-
+- VIRTUAL_HOST=rest.mydomain.com
+- LETSENCRYPT_HOST=rest.mydomain.com
+- LETSENCRYPT_EMAIL=me@mydomain.com
 ```
 
 
