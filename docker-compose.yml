@@ -2,6 +2,7 @@ version: '3'
 
 services:
    mockup_rest:
+    image: nicoinn/mockup_rest:latest
     build:
       context: ./
     expose:
