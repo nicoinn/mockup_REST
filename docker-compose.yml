@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+   mockup_rest:
+    build:
+      context: ./
+    expose:
+      - 5000
+    volumes:
+      - ./:/data
+    environment:
+      - VIRTUAL_HOST=DEFINE_ME_IN_OVERRIDE_FILE
+      - VIRTUAL_PORT=5000
+      - LETSENCRYPT_HOST=DEFINE_ME_IN_OVERRIDE_FILE
+      - LETSENCRYPT_EMAIL=DEFINE_ME_IN_OVERRIDE_FILE
+    restart: always
+
+
+   nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /docker/volumes/nginx-proxy/certs:/etc/nginx/certs:ro
+      - /docker/volumes/nginx-proxy/vhost.d:/etc/nginx/vhost.d
+      - /docker/volumes/nginx-proxy/www:/usr/share/nginx/html
+    restart: always
+
+   le_companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - /docker/volumes/nginx-proxy/certs:/etc/nginx/certs:rw
+      - /docker/volumes/nginx-proxy/vhost.d:/etc/nginx/vhost.d
+      - /docker/volumes/nginx-proxy/www:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: always

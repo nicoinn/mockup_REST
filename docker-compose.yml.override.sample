@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+   mockup_rest:
+    #volumes:
+    #  - YOU_MIGHT_WANT_ANOTHER_FOLDER_HERE:/data
+    environment:
+      - VIRTUAL_HOST=rest.mydomain.com
+      - LETSENCRYPT_HOST=rest.mydomain.com
+      - LETSENCRYPT_EMAIL=me@mydomain.com
+    restart: always
