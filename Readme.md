@@ -1,5 +1,8 @@
 # Ultra simple mock-up REST API
 
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/nicoinn/mockup_rest.svg?style=popout) [![](https://images.microbadger.com/badges/image/nicoinn/mockup_rest.svg)](https://microbadger.com/images/nicoinn/mockup_rest "Get your own image badge on microbadger.com")
+
+
 This implements a ultra-simple REST API that will do nothing more than recording any json data sent to it and replying 'ok' to everything.
 
 Endpoints:
