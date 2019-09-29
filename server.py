@@ -47,7 +47,7 @@ def sink():
 
 
 @app.route('/digita/', methods=['GET', 'POST'])
-def sink():
+def digita():
     import datetime
     query = dict()
 
